@@ -1,0 +1,5 @@
+# Python compilation files
+*.pyc
+
+# Vim auto-save files
+*.swp
