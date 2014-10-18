@@ -3,3 +3,11 @@
 
 # Vim auto-save files
 *.swp
+
+# NPM error files
+npm-debug.log
+
+# SQLite3 databases
+*.sqlite3
+
+.ropeproject/
