@@ -2,6 +2,13 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from django.views.generic import TemplateView
 
+from rest_framework.routers import DefaultRouter
+
+from authentication.views.account import AccountViewSet
+
+router = DefaultRouter()
+router.register(r'accounts', AccountViewSet)
+
 urlpatterns = patterns(
     '',
     # Examples:
@@ -10,6 +17,11 @@ urlpatterns = patterns(
 
 
     url(r'^admin/', include(admin.site.urls)),
+
+    url(r'^api/auth/',
+        include('rest_framework.urls', namespace='rest_framework')),
+
+    url(r'^api/v1/', include(router.urls)),
 
     url(r'^$', TemplateView.as_view(template_name='static/index.html')),
 )
