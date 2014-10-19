@@ -5,9 +5,11 @@ from django.views.generic import TemplateView
 from rest_framework.routers import DefaultRouter
 
 from authentication.views.account import AccountViewSet
+from authentication.views.user import UserViewSet
 
 router = DefaultRouter()
 router.register(r'accounts', AccountViewSet)
+router.register(r'users', UserViewSet)
 
 urlpatterns = patterns(
     '',
