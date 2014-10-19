@@ -6,10 +6,12 @@ from rest_framework.routers import DefaultRouter
 
 from authentication.views.account import AccountViewSet
 from authentication.views.user import UserViewSet
+from thoughts.views import ThoughtViewSet
 
 router = DefaultRouter()
 router.register(r'accounts', AccountViewSet)
 router.register(r'users', UserViewSet)
+router.register(r'thoughts', ThoughtViewSet)
 
 urlpatterns = patterns(
     '',

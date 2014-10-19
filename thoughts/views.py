@@ -1,3 +1,9 @@
-from django.shortcuts import render
+from rest_framework import viewsets
 
-# Create your views here.
+from thoughts.models import Thought
+from thoughts.serializers import ThoughtSerializer
+
+
+class ThoughtViewSet(viewsets.ModelViewSet):
+    queryset = Thought.objects.all()
+    serializer_class = ThoughtSerializer
