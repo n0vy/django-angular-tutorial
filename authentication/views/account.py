@@ -1,4 +1,3 @@
-from rest_framework import mixins
 from rest_framework import permissions
 from rest_framework import generics
 
@@ -12,6 +11,6 @@ class AccountRetrieveUpdateView(generics.RetrieveUpdateAPIView):
     serializer_class = AccountSerializer
 
     def get_permissions(self):
-        if self.request.method == 'POST':
+        if self.request.method == 'GET':
             return (permissions.AllowAny(),)
         return (IsAccountOwnerOrStaff(),)
