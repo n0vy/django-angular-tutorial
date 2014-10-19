@@ -4,28 +4,29 @@ from django.views.generic import TemplateView
 
 from rest_framework.routers import DefaultRouter
 
-from authentication.views.account import AccountViewSet
-from authentication.views.user import UserViewSet
-from thoughts.views import ThoughtViewSet
-
-router = DefaultRouter()
-router.register(r'accounts', AccountViewSet)
-router.register(r'users', UserViewSet)
-router.register(r'thoughts', ThoughtViewSet)
+from authentication.views.account import AccountRetrieveUpdateView
+from authentication.views.user import UserCreateView, UserDestroyView
+from thoughts.views import ThoughtListCreateView, \
+    ThoughtRetrieveUpdateDestroyView
 
 urlpatterns = patterns(
     '',
-    # Examples:
-    # url(r'^$', 'django_angular_tutorial.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
-
 
     url(r'^admin/', include(admin.site.urls)),
 
     url(r'^api/auth/',
         include('rest_framework.urls', namespace='rest_framework')),
 
-    url(r'^api/v1/', include(router.urls)),
+    url(r'^api/v1/accounts/(?P<pk>[0-9]+)/$',
+        AccountRetrieveUpdateView.as_view(), name='account'),
+
+    url(r'^api/v1/users/$', UserCreateView.as_view(), name='accounts'),
+    url(r'^api/v1/users/(?P<pk>[0-9]+)/$',
+        UserDestroyView.as_view(), name='account'),
+
+    url(r'^api/v1/thoughts/$', ThoughtListCreateView.as_view(), name='thoughts'),
+    url(r'^api/v1/thoughts/(?P<pk>[0-9]+)/$',
+        ThoughtRetrieveUpdateDestroyView.as_view(), name='thought'),
 
     url(r'^$', TemplateView.as_view(template_name='static/index.html')),
 )
