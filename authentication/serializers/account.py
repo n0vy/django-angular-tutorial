@@ -1,6 +1,7 @@
 from rest_framework import serializers
 
 from authentication.models.account import Account
+from authentication.serializers.user import UserSerializer
 
 
 class UserField(serializers.RelatedField):
@@ -11,7 +12,7 @@ class UserField(serializers.RelatedField):
 
 
 class AccountSerializer(serializers.ModelSerializer):
-    user = UserField()
+    user = UserSerializer()
 
     class Meta:
         model = Account
