@@ -28,5 +28,5 @@ urlpatterns = patterns(
     url(r'^api/v1/thoughts/(?P<pk>[0-9]+)/$',
         ThoughtRetrieveUpdateDestroyView.as_view(), name='thought'),
 
-    url(r'^$', TemplateView.as_view(template_name='static/index.html')),
+    url(r'^', TemplateView.as_view(template_name='static/index.html')),
 )
