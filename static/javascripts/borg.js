@@ -1,6 +1,7 @@
 angular.module('borg', [
   'borg.config',
-  'borg.routes'
+  'borg.routes',
+  'borg.authentication'
 ]);
 
 angular.module('borg.config', []);
