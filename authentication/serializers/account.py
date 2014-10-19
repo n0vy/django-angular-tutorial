@@ -1,29 +1,17 @@
 from rest_framework import serializers
 
 from authentication.models.account import Account
-from authentication.serializers.user import UserSerializer
-
-
-class UserField(serializers.RelatedField):
-    def to_native(self, value):
-        return {
-            'username': value.username
-        }
 
 
 class AccountSerializer(serializers.ModelSerializer):
-    user = UserSerializer()
+    account_id = serializers.IntegerField(source='id')
+    user_id = serializers.IntegerField(source='user.id')
+    username = serializers.CharField(source='user.username')
+    email = serializers.CharField(source='user.email')
 
     class Meta:
         model = Account
-        fields = ('id', 'user', 'created_at', 'updated_at')
-
-    def restore_object(self, attrs, instance=None):
-        if instance:
-            instance.user = attrs.get('user', instance.user)
-            instance.created_at = attrs.get('created_at', instance.created_at)
-            instance.updated_at = attrs.get('updated_at', instance.updated_at)
-
-            return instance
-
-        return Account(**attrs)
+        fields = (
+            'account_id', 'user_id', 'username', 'email', 'created_at',
+            'updated_at'
+        )
