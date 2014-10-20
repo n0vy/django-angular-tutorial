@@ -4,6 +4,8 @@
 
     <div class="well">
       <form role="form" ng-submit="login()">
+        <div class="alert alert-danger" ng-show="error" ng-bind="error"></div>
+
         <div class="form-group">
           <label for="login__username">Username</label>
           <input type="text" class="form-control" id="login__username" ng-model="username" placeholder="ex. hugh" />

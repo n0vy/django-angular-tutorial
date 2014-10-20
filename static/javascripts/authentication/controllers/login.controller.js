@@ -10,8 +10,8 @@ angular.module('borg.authentication.controllers')
           $cookies.authenticatedUser = data;
 
           window.location = '/';
-        }, function (data, status, headers, config) {
-          console.log(data);
+        }, function (response) {
+          $scope.error = response.data.error;
         });
     };
   });
