@@ -12,7 +12,7 @@ class ThoughtSerializer(serializers.ModelSerializer):
 
         fields = ('id', 'author', 'content', 'created_at', 'updated_at')
 
-    def get_validation_exclusions(self):
+    def get_validation_exclusions(self, *args, **kwargs):
         exclusions = super(ThoughtSerializer, self).get_validation_exclusions()
 
         return exclusions + ['author']
