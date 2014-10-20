@@ -1,13 +1,19 @@
+import json
+
 from django.contrib.auth import authenticate, login, logout
 
 from rest_framework import permissions, views
 from rest_framework.response import Response
 
+from authentication.serializers.user import UserSerializer
+
 
 class LoginView(views.APIView):
     def post(self, request, format=None):
-        username = request.POST.get('username', None)
-        password = request.POST.get('password', None)
+        data = json.loads(request.body)
+
+        username = data.get('username', None)
+        password = data.get('password', None)
 
         user = authenticate(username=username, password=password)
 
@@ -15,7 +21,9 @@ class LoginView(views.APIView):
             if user.is_active:
                 login(request, user)
 
-                return Response(user)
+                serialized = UserSerializer(user)
+
+                return Response(serialized.data)
             else:
                 return Response({
                     'error': 'Your account has been disabled.'
