@@ -3,6 +3,7 @@ angular.module('borg.thoughts.directives')
     return {
       controller: 'ThoughtsController',
       scope: {
+        authenticatedUser: '=',
         thoughts: '='
       },
       restrict: 'E',
