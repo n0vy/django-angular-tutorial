@@ -4,7 +4,18 @@
 .thought .thought__author {
   font-weight: bold;
   text-align: right;
+  padding-bottom: 19px;
 }
 
 .thought .thought__content {
+}
+
+.thoughts__add-new-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+.thoughts__add-new .form-group:last-child {
+  margin-bottom: 0;
 }
