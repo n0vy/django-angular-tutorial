@@ -8,11 +8,9 @@ angular.module('borg.thoughts.controllers')
 
     var getSmallestNode = function () {
       var heights = $scope.nodes.map(function (node) {
-        if (!node.length) { return 0; }
-
         return node.reduce(function (previous, current) {
           return previous + current.content.length;
-        });
+        }, 0);
       });
 
       return heights.indexOf(Math.min.apply(this, heights));
