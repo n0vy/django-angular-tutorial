@@ -1,0 +1,10 @@
+.thought {
+}
+
+.thought .thought__author {
+  font-weight: bold;
+  text-align: right;
+}
+
+.thought .thought__content {
+}

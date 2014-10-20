@@ -6,6 +6,6 @@ angular.module('borg.thoughts.directives')
         thoughts: '='
       },
       restrict: 'E',
-      templateUrl: '/static/templates/thoughts/list.html' 
+      templateUrl: '/static/templates/thoughts/thoughts.html' 
     };
   });

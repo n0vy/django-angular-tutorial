@@ -1,9 +1,15 @@
-Thoughts: {{ thoughts }}
-
-<div ng-repeat="thought in thoughts">
+<div ng-repeat="thought in thoughts" ng-cloak>
   <div class="row">
     <div class="col-sm-12">
-      <div class="well" ng-bind="thought.content"></div>
+      <div class="well thought">
+        <div class="thought__author">
+          +{{ thought.author.username }}
+        </div>
+
+        <div class="thought__content">
+          {{ thought.content }}
+        </div>
+      </div>
     </div>
   </div>
 </div>
