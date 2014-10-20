@@ -3,15 +3,15 @@
     <h1>Login</h1>
 
     <div class="well">
-      <form role="form">
+      <form role="form" ng-submit="login()">
         <div class="form-group">
           <label for="login__username">Username</label>
-          <input type="text" class="form-control" id="login__username" placeholder="ex. hugh" />
+          <input type="text" class="form-control" id="login__username" ng-model="username" placeholder="ex. hugh" />
         </div>
 
         <div class="form-group">
           <label for="login__password">Password</label>
-          <input type="password" class="form-control" id="login__password" placeholder="ex. weareborg" />
+          <input type="password" class="form-control" id="login__password" ng-model="password" placeholder="ex. weareborg" />
         </div>
 
         <div class="form-group">
