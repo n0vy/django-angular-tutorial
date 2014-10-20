@@ -2,15 +2,11 @@ angular.module('borg.thoughts.controllers')
   .controller('ThoughtsController', function ($scope) {
     $scope.nodes = [];
 
-    for (var i = 0; i < 4; ++i) {
-      $scope.nodes.push([]);
-    }
-
     var getSmallestNode = function () {
       var heights = $scope.nodes.map(function (node) {
         return node.reduce(function (previous, current) {
           return previous + current.content.length;
-        }, 0);
+        }, 0) * node.length;
       });
 
       return heights.indexOf(Math.min.apply(this, heights));
@@ -30,6 +26,10 @@ angular.module('borg.thoughts.controllers')
       },
       function (newValue, oldValue) {
         if (newValue !== oldValue) {
+          $scope.nodes = [];
+
+          for (var i = 0; i < 4; ++i ) { $scope.nodes.push([]) }
+
           createColumns(newValue);
         }
       }
