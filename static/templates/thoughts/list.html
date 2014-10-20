@@ -1,0 +1,9 @@
+Thoughts: {{ thoughts }}
+
+<div ng-repeat="thought in thoughts">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="well" ng-bind="thought.content"></div>
+    </div>
+  </div>
+</div>
