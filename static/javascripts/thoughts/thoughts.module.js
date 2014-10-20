@@ -5,5 +5,5 @@ angular.module('borg.thoughts', [
 ]);
 
 angular.module('borg.thoughts.controllers', []);
-angular.module('borg.thoughts.directives', []);
+angular.module('borg.thoughts.directives', ['ngDialog']);
 angular.module('borg.thoughts.services', []);

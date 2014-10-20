@@ -4,4 +4,16 @@
       <thought-list thoughts="node"></thought-list>
     </div>
   </div>
+
+  <div ng-hide="thoughts">
+    <div class="col-sm-12">
+      <em>The Borg is sleeping.</em>
+    </div>
+  </div>
 </div>
+
+<a class="btn btn-primary btn-fab btn-raised icon-material-add thoughts__add-new-btn"
+   href="javascript:void(0)"
+   ng-show="authenticatedUser"
+   ng-dialog="/static/templates/static/add-new-thought.html"
+   ng-dialog-controller="NewThoughtController"></a>
