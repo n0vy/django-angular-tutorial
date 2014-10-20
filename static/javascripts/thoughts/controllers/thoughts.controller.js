@@ -20,7 +20,7 @@ angular.module('borg.thoughts.controllers')
           return element.content.length;
         });
 
-        return lengths().reduce(sum, 0) * node.length;
+        return lengths.reduce(sum, 0) * node.length;
       });
 
       return scores.indexOf(
@@ -30,6 +30,8 @@ angular.module('borg.thoughts.controllers')
 
     var render = function (newValue, oldValue) {
       if (newValue !== oldValue) {
+        var thoughts = newValue;
+
         $scope.nodes = [];
 
         var numberOfColumns = calculateNumberOfColumns();
