@@ -1,53 +1,48 @@
 angular.module('borg.thoughts.controllers')
   .controller('ThoughtsController', function ($scope) {
     $scope.nodes = [];
-    $scope.columns = 0;
-
-    var getSmallestNode = function () {
-      var heights = $scope.nodes.map(function (node) {
-        return node.reduce(function (previous, current) {
-          return previous + current.content.length;
-        }, 0) * node.length;
-      });
-
-      return heights.indexOf(Math.min.apply(this, heights));
-    };
 
     var calculateNumberOfColumns = function () {
       var width = $(window).width();
 
-      if (width >= 1200) {
-        $scope.columns = 4;
-      } else if (width >= 992) {
-        $scope.columns = 3;
-      } else if (width >= 768) {
-        $scope.columns = 2;
-      } else {
-        $scope.columns = 1;
-      }
+      if (width >= 1200) { return 4; } 
+      else if (width >= 992) { return 3; } 
+      else if (width >= 768) { return 2; } 
+      
+      return 1;
     };
 
-    var createColumns = function () {
-      calculateNumberOfColumns();
+    var getSmallestNode = function () {
+      var scores = $scope.nodes.map(function (node) {
+        var sum = function (a, b) { return a + b; };
 
-      $scope.nodes = [];
+        var lengths = node.map(function (element) {
+          return element.content.length;
+        });
 
-      for (var i = 0; i < $scope.columns; ++i) {
-        $scope.nodes.push([]);
-      }
-    };
+        return lengths().reduce(sum, 0) * node.length;
+      });
 
-    var fillColumns = function (thoughts) {
-      for (var i = 0; i < thoughts.length; ++i) {
-        var node = getSmallestNode();
-        $scope.nodes[node].push(thoughts[i]);
-      }
+      return scores.indexOf(
+        Math.min.apply(this, scores)
+      );
     };
 
     var render = function (newValue, oldValue) {
       if (newValue !== oldValue) {
-        createColumns();
-        fillColumns(newValue);
+        $scope.nodes = [];
+
+        var numberOfColumns = calculateNumberOfColumns();
+
+        for (var i = 0; i < numberOfColumns; ++i) {
+          $scope.nodes.push([]);
+        }
+
+        for (var i = 0; i < thoughts.length; ++i) {
+          var node = getSmallestNode();
+
+          $scope.nodes[node].push(thoughts[i]);
+        }
       }
     };
 
