@@ -10,4 +10,8 @@ npm-debug.log
 # SQLite3 databases
 *.sqlite3
 
+# Rope
 .ropeproject/
+
+# Bower files
+static/bower_components
