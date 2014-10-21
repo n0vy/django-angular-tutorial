@@ -1,0 +1,8 @@
+<div ng-show="account">
+  <div class="jumbotron profile__header">
+    <h1 class="profile__username">{{ account.username }}</h1>
+    <p class="profile__tagline">{{ account.tagline }}</p>
+  </div>
+
+  <thoughts thoughts="thoughts" authenticatedUser="authenticatedUser"></thoughts>
+</div>

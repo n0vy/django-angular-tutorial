@@ -9,5 +9,8 @@ angular.module('borg.routes')
     }).when('/register', {
       controller: 'RegisterController',
       templateUrl: '/static/templates/register.html'
+    }).when('/+:username' , {
+      controller: 'ProfileController',
+      templateUrl: '/static/templates/profiles/profile.html'
     });
   });

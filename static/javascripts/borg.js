@@ -3,6 +3,7 @@ angular.module('borg', [
   'borg.config',
   'borg.routes',
   'borg.authentication',
+  'borg.profiles',
   'borg.static',
   'borg.thoughts'
 ]);
