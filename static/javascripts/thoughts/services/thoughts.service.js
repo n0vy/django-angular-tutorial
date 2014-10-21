@@ -9,6 +9,10 @@ angular.module('borg.thoughts.services')
         return $http.post('/api/v1/thoughts/', {
           content: content
         });
+      },
+
+      get: function (username) {
+        return $http.get('/api/v1/accounts/' + username + '/thoughts/');
       }
     };
 
