@@ -1,11 +1,6 @@
 <div class="col-md-4 col-md-offset-4">
   <div class="well" ng-show="account">
-    <form role="form" class="settings">
-      <div class="form-group">
-        <label for="settings__email">Email</label>
-        <input type="email" class="form-control" id="settings__email" ng-model="account.email" placeholder="ex. hugh@borg.org" />
-      </div>
-
+    <form role="form" class="settings" ng-submit="update()">
       <div class="form-group">
         <label for="settings__tagline">Tagline</label>
         <textarea class="form-control" id="settings__tagline" ng-model="account.tagline" placeholder="ex. We are borg." />
@@ -13,6 +8,7 @@
 
       <div class="form-group">
         <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="button" class="btn btn-danger pull-right" ng-click="destroy()">Delete Account</button>
       </div>
     </form>
   </div>
