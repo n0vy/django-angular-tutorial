@@ -7,6 +7,8 @@ from django.dispatch import receiver
 class Account(models.Model):
     user = models.OneToOneField(User)
 
+    tagline = models.CharField(max_length=140, null=True)
+
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
