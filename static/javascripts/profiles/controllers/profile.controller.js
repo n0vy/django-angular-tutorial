@@ -13,7 +13,7 @@ angular.module('borg.profiles.controllers')
       }
     );
 
-    Thoughts.get(username.substr(1)).then(
+    Thoughts.get(username).then(
       function (data, status, headers, config) {
         $scope.thoughts = data.data;
       },
