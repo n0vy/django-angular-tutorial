@@ -6,6 +6,7 @@ from authentication.views.account import AccountRetrieveUpdateView, \
     AccountThoughtsListView
 from authentication.views.auth import LoginView, LogoutView
 from authentication.views.user import UserCreateView, UserDestroyView
+from plus_one.views import PlusOneCreateDestroyView
 from thoughts.views import ThoughtListCreateView, \
     ThoughtRetrieveUpdateDestroyView
 
@@ -33,6 +34,9 @@ urlpatterns = patterns(
         ThoughtListCreateView.as_view(), name='thoughts'),
     url(r'^api/v1/thoughts/(?P<pk>[0-9]+)/$',
         ThoughtRetrieveUpdateDestroyView.as_view(), name='thought'),
+
+    url(r'^api/v1/thoughts/(?<pk>[0-9]+)/plus_one/$',
+        PlusOneCreateDestroyView.as_view(), name='plus_one'),
 
     url(r'^', TemplateView.as_view(template_name='static/index.html')),
 )
