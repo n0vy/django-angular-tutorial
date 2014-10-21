@@ -35,7 +35,7 @@ urlpatterns = patterns(
     url(r'^api/v1/thoughts/(?P<pk>[0-9]+)/$',
         ThoughtRetrieveUpdateDestroyView.as_view(), name='thought'),
 
-    url(r'^api/v1/thoughts/(?<pk>[0-9]+)/plus_one/$',
+    url(r'^api/v1/thoughts/(?P<pk>[0-9]+)/plus_one/$',
         PlusOneCreateDestroyView.as_view(), name='plus_one'),
 
     url(r'^', TemplateView.as_view(template_name='static/index.html')),
