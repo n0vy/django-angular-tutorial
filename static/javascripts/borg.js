@@ -13,5 +13,6 @@ angular.module('borg.routes', ['ngRoute']);
 
 angular.module('borg')
   .run(function ($http, $cookies) {
-    $http.defaults.headers.post['X-CSRFToken'] = $cookies.csrftoken;
+    $http.defaults.xsrfHeaderName = 'X-CSRFToken';
+    $http.defaults.xsrfCookieName = 'csrftoken';
   });
