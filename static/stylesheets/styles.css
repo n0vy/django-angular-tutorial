@@ -1,10 +1,14 @@
-.thought__author {
+.thought__meta {
   font-weight: bold;
   text-align: right;
   padding-bottom: 19px;
 }
 
-.thought__author a:hover {
+.thought__plus-one {
+  float: left;
+}
+
+.thought__meta a:hover {
   text-decoration: none;
 }
 
