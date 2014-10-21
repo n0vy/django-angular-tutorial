@@ -12,5 +12,8 @@ angular.module('borg.routes')
     }).when('/+:username' , {
       controller: 'ProfileController',
       templateUrl: '/static/templates/profiles/profile.html'
+    }).when('/+:username/settings', {
+      controller: 'ProfileSettingsController',
+      templateUrl: '/static/templates/profiles/settings.html'
     });
   });
