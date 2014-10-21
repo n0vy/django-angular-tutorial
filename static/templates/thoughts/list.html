@@ -3,7 +3,9 @@
     <div class="col-sm-12">
       <div class="well thought">
         <div class="thought__author">
-          +{{ thought.author.username }}
+          <a href="/+{{ thought.author.username }}">
+            +{{ thought.author.username }}
+          </a>
         </div>
 
         <div class="thought__content">
