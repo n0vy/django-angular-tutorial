@@ -1,13 +1,7 @@
-.thought {
-}
-
-.thought .thought__author {
+.thought__author {
   font-weight: bold;
   text-align: right;
   padding-bottom: 19px;
-}
-
-.thought .thought__content {
 }
 
 .thoughts__add-new-btn {
@@ -18,4 +12,10 @@
 
 .thoughts__add-new .form-group:last-child {
   margin-bottom: 0;
+}
+
+.profile__header {
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
 }
