@@ -26,3 +26,7 @@
 .profile__username {
   font-weight: bold;
 }
+
+.settings .form-group:last-child {
+  margin-bottom: 0;
+}

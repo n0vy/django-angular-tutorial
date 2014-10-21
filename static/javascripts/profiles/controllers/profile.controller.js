@@ -2,7 +2,7 @@ angular.module('borg.profiles.controllers')
   .controller('ProfileController', function ($cookies, $routeParams, $scope, Profile, Thoughts) {
     $scope.authenticatedUser = $cookies.authenticatedUser;
 
-    var username = $routeParams.username;
+    var username = $routeParams.username.substr(1);
 
     Profile.get(username).then(
       function (data, status, headers, config) {
