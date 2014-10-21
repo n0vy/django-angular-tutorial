@@ -7,7 +7,7 @@ angular.module('borg.authentication.controllers')
     $scope.login = function () {
       Authentication.login($scope.username, $scope.password)
         .then(function (data, status, headers, config) {
-          $cookies.authenticatedUser = data;
+          $cookies.authenticatedUser = JSON.stringify(data.data);
 
           window.location = '/';
         }, function (response) {
