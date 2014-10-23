@@ -1,6 +1,14 @@
 angular.module('borg.authentication.services')
-  .service('Authentication', function ($http, $location, $q) {
+  .service('Authentication', function ($cookies, $http) {
     var Authentication = {
+      authenticatedUser: function () {
+        if (!$cookies.authenticatedUser) {
+          return;
+        }
+
+        return JSON.parse($cookies.authenticatedUser);
+      },
+
       login: function (username, password) {
         return $http.post('/api/v1/auth/login/', {
           username: username, password: password
@@ -17,6 +25,10 @@ angular.module('borg.authentication.services')
           password: password,
           email: email
         });
+      }, 
+
+      unauthenticate: function () {
+        delete $cookies.authenticatedUser;
       }
     };
 
