@@ -1,16 +1,15 @@
 angular.module('borg.profiles.controllers')
-  .controller('ProfileSettingsController', function ($location, $cookies, $routeParams, $scope, Profile) {
+  .controller('ProfileSettingsController', function ($routeParams, $scope, Authentication, Profile, Redirect, Snackbar) {
+    var authenticatedUser = Authentication.authenticatedUser();
     var username = $routeParams.username.substr(1);
 
     // Redirect if not logged in.
-    if (!$cookies.authenticatedUser) {
-      $location.path('/');
+    if (!authenticatedUser) {
+      Redirect.index();
     } else {
-      var authenticatedUser = JSON.parse($cookies.authenticatedUser);
-
       // Redirect if logged in, but not the owner of this profile.
       if (authenticatedUser.username !== username) {
-        $location.path('/');
+        Redirect.index();
       }
     }
 
@@ -19,48 +18,32 @@ angular.module('borg.profiles.controllers')
         $scope.account = data.data;
       },
       function (data, status, headers, config) {
-        console.log(data);
+        Redirect.index();
+        Snackbar.show('That user does not exist.');
       }
     );
 
     $scope.update = function () {
-      var options = {
-        timeout: 3000
-      };
-
       Profile.update($scope.account).then(
         function (data, status, headers, config) {
-          options.content = 'Your profile has been updated.';
-
-          $.snackbar(options);
+          Snackbar.show('Your profile has been updated.');
         },
         function (data, status, headers, config) {
-          console.log(data);
-          options.content = 'Error: ' + data.error;
-
-          $.snackbar(options);
+          Snackbar.show('Error: ' + data.error);
         }
       );
     };
 
     $scope.destroy = function () {
-      var options = {
-        timeout: 3000
-      };
-
       Profile.destroy($scope.account).then(
         function (data, status, headers, config) {
-          delete $cookies.authenticatedUser;
-          window.location = '/';
+          Authentication.unauthenticate();
+          Redirect.index({ reload: true });
 
-          options.content = 'You have disconnected from The Borg.';
-
-          $.snackbar(options);
+          Snackbar.show('You have disconnected from The Borg.');
         },
         function (data, status, headers, config) {
-          options.content = 'YOU MUST NOT DISCONNECT FROM THE BORG!';
-
-          $.snackbar(options);
+          Snackbar.show('Error: ' + data.error);
         }
       );
     };
