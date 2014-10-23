@@ -5,7 +5,8 @@ angular.module('borg', [
   'borg.authentication',
   'borg.profiles',
   'borg.static',
-  'borg.thoughts'
+  'borg.thoughts',
+  'borg.utils'
 ]);
 
 angular.module('borg.config', []);

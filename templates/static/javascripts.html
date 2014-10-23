@@ -1,5 +1,6 @@
 {% load staticfiles %}
 
+<script type="text/javascript" src="{% static 'bower_components/underscore/underscore.js' %}"></script>
 <script type="text/javascript" src="{% static 'bower_components/jquery/dist/jquery.js' %}"></script>
 <script type="text/javascript" src="{% static 'bower_components/bootstrap/dist/js/bootstrap.js' %}"></script>
 <script type="text/javascript" src="{% static 'bower_components/bootstrap-material-design/dist/js/material.js' %}"></script>
@@ -37,3 +38,7 @@
 <script type="text/javascript" src="{% static 'javascripts/thoughts/controllers/new-thought.controller.js' %}"></script>
 <script type="text/javascript" src="{% static 'javascripts/thoughts/directives/thoughts.directive.js' %}"></script>
 <script type="text/javascript" src="{% static 'javascripts/thoughts/directives/thought-list.directive.js' %}"></script>
+
+<script type="text/javascript" src="{% static 'javascripts/utils/utils.module.js' %}"></script>
+<script type="text/javascript" src="{% static 'javascripts/utils/services/redirect.service.js' %}"></script>
+<script type="text/javascript" src="{% static 'javascripts/utils/services/snackbar.service.js' %}"></script>
