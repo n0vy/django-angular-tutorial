@@ -13,6 +13,9 @@ npm-debug.log
 # Rope
 .ropeproject/
 
+# Node cache
+node_modules
+
 # Bower files
 static/bower_components
 
