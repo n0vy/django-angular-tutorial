@@ -1,0 +1,22 @@
+{
+  "name": "django-angular-tutorial",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/brwr/django-angular-tutorial.git"
+  },
+  "author": "James Brewer <james@jamesbrewer.io>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/brwr/django-angular-tutorial/issues"
+  },
+  "homepage": "https://github.com/brwr/django-angular-tutorial",
+  "dependencies": {
+    "bower": "^1.3.12"
+  }
+}
