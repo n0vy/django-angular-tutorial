@@ -19,5 +19,4 @@ class Thought(models.Model):
     def delete_thoughts_for_account(sender, instance=None, **kwargs):
         if instance:
             thoughts = Thought.objects.filter(author=instance)
-            import pdb; pdb.set_trace()
             thoughts.delete()
