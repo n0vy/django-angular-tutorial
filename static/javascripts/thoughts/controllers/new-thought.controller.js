@@ -1,5 +1,5 @@
 angular.module('borg.thoughts.controllers')
-  .controller('NewThoughtController', function ($rootScope, $scope, Thoughts) {
+  .controller('NewThoughtController', function ($rootScope, $scope, Snackbar, Thoughts) {
     $scope.submit = function () {
       $scope.closeThisDialog();
 
