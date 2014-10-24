@@ -27,6 +27,10 @@ angular.module('borg.authentication.services')
         });
       }, 
 
+      setAuthenticatedUser: function (user) {
+        $cookies.authenticatedUser = JSON.stringify(user);
+      },
+
       unauthenticate: function () {
         delete $cookies.authenticatedUser;
       }
