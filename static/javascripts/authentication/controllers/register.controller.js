@@ -1,7 +1,7 @@
 angular.module('borg.authentication.controllers')
   .controller('RegisterController', function ($scope, Authentication, Redirect, Snackbar) {
     // Logged in users should not be on this page.
-    if (Authentication.authenticateUser()) {
+    if (Authentication.authenticatedUser()) {
       Redirect.index();
     }
 
