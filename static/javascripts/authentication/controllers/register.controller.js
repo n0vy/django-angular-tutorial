@@ -1,18 +1,19 @@
 angular.module('borg.authentication.controllers')
-  .controller('RegisterController', function ($cookies, $scope, $location, Authentication) {
-    if ($cookies.authenticatedUser) {
-      $location.path('/');
+  .controller('RegisterController', function ($scope, Authentication, Redirect, Snackbar) {
+    // Logged in users should not be on this page.
+    if (Authentication.authenticateUser()) {
+      Redirect.index();
     }
 
-    $scope.login = function (username, password) {
+    var login = function (username, password) {
       Authentication.login(username, password).then(
         function (data, status, headers, config) {
-          $cookies.authenticatedUser = data;
+          Authentication.setAuthenticatedUser(data.data);
 
-          window.location = '/';
+          Redirect.index({ reload: true });
         }, 
         function (data, status, headers, config) {
-          console.log(data);
+          Snackbar.error(data.error);
         }
       );
     };
@@ -20,10 +21,10 @@ angular.module('borg.authentication.controllers')
     $scope.register = function () {
       Authentication.register($scope.username, $scope.password, $scope.email).then(
         function (data, status, headers, config) {
-          $scope.login($scope.username, $scope.password);
+          login($scope.username, $scope.password);
         },
         function (data, status, headers, config) {
-          console.log(data);
+          Snackbar.error(data.error);
         }
       );
     };
