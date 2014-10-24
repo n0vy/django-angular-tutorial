@@ -98,6 +98,7 @@ STATIC_ROOT = 'staticfiles'
 
 STATICFILES_DIRS = (
     'static',
+    'dist/static',
 )
 
 STATICFILES_FINDERS = (
@@ -123,14 +124,3 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 ALLOWED_HOSTS = ['*']
 
 COMPRESS_ENABLED = True
-
-BOWER_COMPONENTS_ROOT = BASE_DIR
-
-BOWER_INSTALLED_APPS = (
-    'angular',
-    'angular-cookies',
-    'angular-route',
-    'bootstrap',
-    'bootstrap-material-design',
-    'underscore',
-)
