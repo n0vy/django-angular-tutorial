@@ -1,17 +1,18 @@
 angular.module('borg.authentication.controllers')
-  .controller('LoginController', function ($cookies, $location, $scope, Authentication) {
-    if ($cookies.authenticatedUser) {
-      $location.path('/');
+  .controller('LoginController', function ($scope, Authentication, Redirect, Snackbar) {
+    // Logged in users should not be on this page.
+    if (Authentication.authenticatedUser()) {
+      Redirect.index();
     }
 
     $scope.login = function () {
       Authentication.login($scope.username, $scope.password)
         .then(function (data, status, headers, config) {
-          $cookies.authenticatedUser = JSON.stringify(data.data);
+          Authentication.setAuthenticatedUser(data.data);
 
-          window.location = '/';
-        }, function (response) {
-          $scope.error = response.data.error;
+          Redirect.index({ reload: true });
+        }, function (data, status, headers, config) {
+          Snackbar.error(data.error);
         });
     };
   });
