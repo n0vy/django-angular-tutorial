@@ -3,22 +3,14 @@ angular.module('borg.thoughts.controllers')
     $scope.submit = function () {
       $scope.closeThisDialog();
 
-      var options = {
-        timeout: 2000
-      };
-
       Thoughts.create($scope.content).then(
         function (data, status, headers, config) {
           $rootScope.$broadcast('thought.created');
 
-          options.content = 'Success! Your thought has been uploaded to the Collective.';
-
-          $.snackbar(options);
+          Snackbar.show('Success! Your thought has been uploaded to the Collective.');
         },
         function (data, status, headers, config) {
-          options.content = 'Error! Trouble connecting to the Hive Mind.';
-
-          $.snackbar(options);
+          Snackbar.error(data.error);
         }
       );
     };
