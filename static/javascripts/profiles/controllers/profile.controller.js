@@ -1,6 +1,6 @@
 angular.module('borg.profiles.controllers')
-  .controller('ProfileController', function ($cookies, $routeParams, $scope, Profile, Thoughts) {
-    $scope.authenticatedUser = $cookies.authenticatedUser;
+  .controller('ProfileController', function ($routeParams, $scope, Authentication, Profile, Redirect, Snackbar, Thoughts) {
+    $scope.authenticatedUser = Authentication.authenticatedUser();
 
     var username = $routeParams.username.substr(1);
 
@@ -9,7 +9,8 @@ angular.module('borg.profiles.controllers')
         $scope.account = data.data;
       },
       function (data, status, headers, config) {
-        console.log('Profile:', data);
+        Redirect.index();
+        Snackbar.error('That user does not exist.');
       }
     );
 
@@ -18,7 +19,7 @@ angular.module('borg.profiles.controllers')
         $scope.thoughts = data.data;
       },
       function (data, status, headers, config) {
-        console.log('Thoughts:', data);
+        Snackbar.error(data.error);
       }
     );
   });
