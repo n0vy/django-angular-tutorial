@@ -1,12 +1,10 @@
 angular.module('borg.static.controllers')
-  .controller('NavbarController', function ($cookies, $location, $scope, $window, Authentication) {
+  .controller('NavbarController', function ($scope, Authentication, Redirect) {
     $scope.logout = function () {
       Authentication.logout().then(
         function (data, status, headers, config) {
-          delete $cookies.authenticatedUser;
-
-          $location.path('/');
-          $window.location.reload();
+          Authentication.unauthenticate();
+          Redirect.index({ reload: true });
         }
       );
     };
