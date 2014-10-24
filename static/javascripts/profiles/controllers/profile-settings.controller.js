@@ -29,7 +29,7 @@ angular.module('borg.profiles.controllers')
           Snackbar.show('Your profile has been updated.');
         },
         function (data, status, headers, config) {
-          Snackbar.show('Error: ' + data.error);
+          Snackbar.error(data.error);
         }
       );
     };
@@ -43,7 +43,7 @@ angular.module('borg.profiles.controllers')
           Snackbar.show('You have disconnected from The Borg.');
         },
         function (data, status, headers, config) {
-          Snackbar.show('Error: ' + data.error);
+          Snackbar.error(data.error);
         }
       );
     };
