@@ -12,7 +12,7 @@ angular.module('borg.authentication.controllers')
 
           Redirect.index({ reload: true });
         }, function (data, status, headers, config) {
-          Snackbar.error(data.error);
+          Snackbar.error(data.data.error);
         });
     };
   });
