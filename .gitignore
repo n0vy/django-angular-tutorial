@@ -21,3 +21,6 @@ static/bower_components
 
 # Static files cache
 staticfiles
+
+# Distribution files
+dist
