@@ -96,8 +96,8 @@ STATIC_URL = '/static/'
 STATIC_ROOT = 'staticfiles'
 
 STATICFILES_DIRS = (
-    'static',
     'dist/static',
+    'static',
 )
 
 STATICFILES_FINDERS = (
