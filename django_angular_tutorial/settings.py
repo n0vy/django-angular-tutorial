@@ -122,4 +122,4 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 # Allow all host headers
 ALLOWED_HOSTS = ['*']
 
-COMPRESS_ENABLED = False
+COMPRESS_ENABLED = os.environ.get('COMPRESS_ENABLED', False)
