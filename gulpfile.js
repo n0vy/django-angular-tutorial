@@ -12,7 +12,7 @@ gulp.task('annotate', function () {
 });
 
 gulp.task('uglify', function () {
-  return gulp.src('static/javascripts/**/*.js')
+  return gulp.src('dist/javascripts/**/*.js')
     .pipe(uglify())
     .pipe(gulp.dest('dist/static/javascripts/'));
 });
