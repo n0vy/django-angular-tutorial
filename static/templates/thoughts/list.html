@@ -1,17 +1,3 @@
 <div ng-repeat="thought in thoughts" ng-cloak>
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="well thought">
-        <div class="thought__meta">
-          <a href="/+{{ thought.author.username }}">
-            +{{ thought.author.username }}
-          </a>
-        </div>
-
-        <div class="thought__content">
-          {{ thought.content }}
-        </div>
-      </div>
-    </div>
-  </div>
+  <thought thought="thought"></thought>
 </div>
