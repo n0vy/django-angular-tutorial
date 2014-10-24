@@ -1,18 +1,18 @@
 <div class="row">
-  <div ng-repeat="node in nodes">
+  <div ng-repeat="node in nodes" ng-show="thoughts">
     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
       <thought-list thoughts="node"></thought-list>
     </div>
   </div>
 
   <div ng-hide="thoughts">
-    <div class="col-sm-12">
-      <em>The Borg is sleeping.</em>
+    <div class="col-sm-12" style="text-align: center;">
+      <em>The Borg has no thoughts.</em>
     </div>
   </div>
 </div>
 
-<a class="btn btn-primary btn-fab btn-raised icon-material-add thoughts__add-new-btn"
+<a class="btn btn-primary btn-fab btn-raised mdi-content-add thoughts__add-new-btn"
    href="javascript:void(0)"
    ng-show="authenticatedUser"
    ng-dialog="/static/templates/static/add-new-thought.html"
